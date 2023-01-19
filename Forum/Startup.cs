@@ -1,4 +1,5 @@
 using Forum.Entities;
+using Forum.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,10 +27,10 @@ namespace Forum
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
-            services.AddControllers();
+            services.AddControllersWithViews();
             services.AddDbContext<ForumDbContext>();
             services.AddScoped<PostSeeder>();
+            services.AddScoped<IForumService, ForumService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,16 +42,23 @@ namespace Forum
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "/api/forum",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

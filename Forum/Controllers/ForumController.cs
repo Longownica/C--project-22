@@ -1,5 +1,6 @@
 ﻿using Forum.Entities;
 using Forum.Models;
+using Forum.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,42 +12,43 @@ namespace Forum.Controllers
     [Route("api/forum")]
     public class ForumController : ControllerBase
     {
-        private readonly ForumDbContext _dbContext;
-        public ForumController(ForumDbContext dbContext)
+        private readonly IForumService _forumService;
+        public ForumController(IForumService forumService)
         {
-            _dbContext = dbContext;
+            _forumService = forumService;
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete([FromRoute] int id)
+        {
+            var isDeleted = _forumService.Delete(id);
+
+            if (isDeleted)
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public ActionResult CreatePost([FromBody] Post cp)
         {
-
-            var post = cp;
-            DateTime date = DateTime.Now;
-            cp.date = date;
-            _dbContext.Posts.Add(post);
-            _dbContext.SaveChanges();
-
-            return Created($"/api/forum/{post.Id}", null);
+            var id = _forumService.Create(cp);
+            return Created($"/api/forum/{id}", null);
         }
+       
 
         [HttpGet]
         public ActionResult<IEnumerable<Post>> GetAll()
         {
-            var posts = _dbContext
-                .Posts
-                .ToList();
-
+            var posts = _forumService.GetAll();
             return Ok(posts);
         }
 
         [HttpGet("{id}")]
         public ActionResult<Post> Get([FromRoute] int id)
         {
-            var post = _dbContext
-                .Posts
-                .FirstOrDefault(r => r.Id == id);
-
+            var post = _forumService.GetById(id);
             if(post is null)
             {
                 return NotFound();
@@ -54,6 +56,5 @@ namespace Forum.Controllers
 
             return Ok(post);
         }
-
     }
 }

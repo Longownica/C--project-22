@@ -9,6 +9,7 @@
     <Compile Remove="Controllers\ForumControlle.cs" />
     <Compile Remove="Controllers\WeatherForecastController.cs" />
     <Compile Remove="IWeatherForecastService.cs" />
+    <Compile Remove="Services\IForumService.cs" />
     <Compile Remove="WeatherForecast.cs" />
     <Compile Remove="WeatherForecastService.cs" />
   </ItemGroup>
@@ -20,10 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
 </Project>
