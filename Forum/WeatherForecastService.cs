@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Forum
 {
-    public class WeatherForecastService : IWeatherForecastService
+    public class WeatherForecastService
     {
 
         private static readonly string[] Summaries = new[]

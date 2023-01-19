@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Forum.Entities
+namespace Forum.Models
 {
-    public class Post
+    public class PostDto
     {
         public int Id { get; set; }
-
-        [Required]
-        [MaxLength(2000)]
         public string body { get; set; }
         public DateTime date { get; set; }
         public string nickname { get; set; }

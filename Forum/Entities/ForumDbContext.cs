@@ -18,7 +18,6 @@ namespace Forum.Entities
                 .Property(r => r.body)
                 .IsRequired()
                 .HasMaxLength(2000);
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
