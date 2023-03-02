@@ -5,13 +5,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Forum\**" />
+    <Content Remove="Forum\**" />
+    <EmbeddedResource Remove="Forum\**" />
+    <None Remove="Forum\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\Class.cs" />
     <Compile Remove="Controllers\ForumControlle.cs" />
+    <Compile Remove="Controllers\HomeContoller.cs" />
     <Compile Remove="Controllers\WeatherForecastController.cs" />
     <Compile Remove="IWeatherForecastService.cs" />
     <Compile Remove="Services\IForumService.cs" />
+    <Compile Remove="Views\Shared\_Layout.cshtml.cs" />
     <Compile Remove="WeatherForecast.cs" />
     <Compile Remove="WeatherForecastService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Home\StyleSheet.css" />
   </ItemGroup>
 
   <ItemGroup>

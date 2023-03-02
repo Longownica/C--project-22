@@ -1,0 +1,56 @@
+﻿h1 {
+    color: #406010;
+}
+
+h3 {
+    color: #406010;
+}
+
+img {
+    max-width: 225px;
+    max-height: 100%;
+}
+
+div.ansbody {
+    background: #96c455;
+}
+
+div.image {
+    margin-left: 5px;
+    display: inline-block;
+}
+
+div.block {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+div.ansThread {
+    position: relative;
+    margin-left: 200px;
+    margin-right: 0px;
+}
+
+div.start {
+    margin: auto;
+    width: 30%;
+    border: 8px solid #406010;
+    padding: 10px;
+    text-align: center;
+    background: #83b044;
+}
+
+div.opContainer {
+    background: #83b044; 
+}
+
+div.ansContainer {
+    background: #83b044;
+}
+
+div.thread {
+    background: #96c455;
+}
